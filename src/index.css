@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #00B4D8;
+  --color-secondary: #52D9A0;
+  --color-bg: #0A1628;
+  --color-surface: #0F1E38;
+  --color-surface2: #172947;
+  --color-border: #1E3A5F;
+  --color-text: #E8F4FD;
+  --color-text-muted: #7BA7C8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-surface); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
+
+.canvas-container { position: absolute !important; top: 0; left: 0; }
+.lower-canvas, .upper-canvas { position: absolute !important; }
+
+.glow-primary { box-shadow: 0 0 12px rgba(0, 180, 216, 0.4); }
+.glow-secondary { box-shadow: 0 0 12px rgba(82, 217, 160, 0.4); }
+
+.tool-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-text-muted);
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  width: 100%;
+}
+.tool-btn:hover {
+  background: var(--color-surface2);
+  border-color: var(--color-border);
+  color: var(--color-primary);
+}
+.tool-btn.active {
+  background: rgba(0, 180, 216, 0.12);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.sidebar-item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+.sidebar-item:hover {
+  background: var(--color-surface2);
+  border-color: var(--color-border);
+}
+.sidebar-item.active {
+  background: rgba(0, 180, 216, 0.1);
+  border-color: var(--color-primary);
+}
+
+.zoom-badge {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  min-width: 52px;
+  text-align: center;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.save-toast { animation: fadeOut 2.5s forwards; }
+
+.drag-over { outline: 2px dashed var(--color-primary); outline-offset: -4px; }
